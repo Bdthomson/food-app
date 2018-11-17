@@ -4,6 +4,7 @@
     "no-console": false,
     "no-empty-interface": false,
     "interface-name": false,
-    "trailing-comma": false
+    "trailing-comma": false,
+    "arrow-parens": false
   }
 }
