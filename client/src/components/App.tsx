@@ -4,19 +4,19 @@ import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import "./App.css";
 import Home from "./Home";
 import Menu from "./Menu";
-
-interface User {
-  name: string;
-}
+import Recipes from "./Recipes";
+import Settings from "./Settings";
 
 interface State {
   users: User[];
+  recipes: Recipe[];
 }
 
 class App extends Component<{}, State> {
   constructor(props: any) {
     super(props);
     this.state = {
+      recipes: [],
       users: []
     };
   }
@@ -30,6 +30,13 @@ class App extends Component<{}, State> {
             path="/"
             render={() => <Home users={this.state.users} />}
           />
+
+          <Route
+            path="/recipes"
+            render={() => <Recipes recipes={this.state.recipes} />}
+          />
+
+          <Route path="/settings" render={() => <Settings />} />
         </div>
       </Router>
     );

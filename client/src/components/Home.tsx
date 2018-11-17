@@ -6,7 +6,7 @@ export default function Home(props: any) {
       <h1>Users</h1>
       <ul>
         {props.users.map((user: any) => (
-          <li key={user.name}>{user.name}</li>
+          <li key={user.id}>{user.name}</li>
         ))}
       </ul>
       <a href="/api/users">/api</a>
