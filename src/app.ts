@@ -2,8 +2,10 @@ import express from "express";
 
 const app = express();
 
-app.get("/api", (req, res) => {
-  res.send({ message: "API" });
+const users = ["bdthomson"];
+
+app.get("/api/users", (req, res) => {
+  res.send({ users });
 });
 
 export default app;

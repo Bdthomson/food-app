@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
+    "client" :"npm run start --prefix client",
+    "dev": "concurrently \"npm run watch\" \"npm run client\"",
     "start": "npm run serve",
     "build": "npm run build-ts && npm run tslint",
     "serve": "node dist/server.js",

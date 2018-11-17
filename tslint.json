@@ -3,6 +3,7 @@
   "rules": {
     "no-console": false,
     "no-empty-interface": false,
-    "interface-name": false
+    "interface-name": false,
+    "trailing-comma": false
   }
 }
