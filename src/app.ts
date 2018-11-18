@@ -18,7 +18,7 @@ const recipes = [
 ];
 
 app.get("/api/recipes", (req, res) => {
-  res.send({ count: recipes.length, recipes });
+  res.json({ count: recipes.length, recipes });
 });
 
 export default app;
