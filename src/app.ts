@@ -2,14 +2,23 @@ import express from "express";
 
 const app = express();
 
-const users = [
+const recipes = [
   {
-    name: "bdthomson"
+    id: "1",
+    imgUrl: "https://images.pexels.com/photos/128865/pexels-photo-128865.jpeg",
+    ingredients: ["Greek Yogurt", "Honey", "Nuts"],
+    name: "Greek Yogurt with Nuts"
+  },
+  {
+    id: "2",
+    imgUrl: "",
+    ingredients: ["Hamburger Patty", "Cheese"],
+    name: "Burger"
   }
 ];
 
-app.get("/api/users", (req, res) => {
-  res.send({ users });
+app.get("/api/recipes", (req, res) => {
+  res.send({ count: recipes.length, recipes });
 });
 
 export default app;

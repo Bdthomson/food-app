@@ -1,3 +1,5 @@
+import { Action } from "redux";
+
 interface User {
   id: string;
   name: string;
@@ -13,4 +15,9 @@ interface Recipe {
 interface Ingredient {
   id: string;
   name: string;
+}
+
+interface Action extends Action {
+  type: string;
+  payload?: any;
 }

@@ -1,9 +1,8 @@
-import axios from "axios";
-import React, { Component } from "react";
+import React, { Component, Dispatch } from "react";
 import { connect } from "react-redux";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
-import * as Redux from "redux";
-import { fetchUserRequest } from "../actions";
+import { fetchRecipeRequest } from "../actions";
+import { Recipe, User } from "../types";
 import "./App.css";
 import Home from "./Home";
 import Menu from "./Menu";
@@ -11,40 +10,32 @@ import RecipeNew from "./RecipeNew";
 import Recipes from "./Recipes";
 import Settings from "./Settings";
 
-interface State {
-  users: User[];
+interface IMapStateToProps {
   recipes: Recipe[];
 }
 
-interface DispatchProps {
-  fetchUser: () => void;
+interface IMapDispatchToProps {
+  fetchRecipes: () => void;
 }
 
-type Props = DispatchProps;
+type Props = IMapStateToProps & IMapDispatchToProps;
 
-class App extends Component<Props, State> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      recipes: [],
-      users: []
-    };
-  }
+class App extends Component<Props, {}> {
   public render() {
     return (
       <Router>
         <div className="ui container">
           <Menu />
-          <Route
+          {/* <Route
             exact
             path="/"
             render={() => <Home users={this.state.users} />}
-          />
+          /> */}
 
           <Route
             exact
             path="/recipes"
-            render={() => <Recipes recipes={this.state.recipes} />}
+            render={() => <Recipes recipes={this.props.recipes} />}
           />
 
           <Route path="/recipes/new" component={RecipeNew} />
@@ -55,21 +46,22 @@ class App extends Component<Props, State> {
     );
   }
   public componentDidMount() {
-    this.props.fetchUser();
+    this.props.fetchRecipes();
   }
 }
 
-// const mapDispatchToProps = (dispatch: React.Dispatch<any>): DispatchProps => ({
-//   fetchUser: () => dispatch(fetchUserRequest())
-// });
-
-function mapDispatchToProps(dispatch: React.Dispatch<any>): DispatchProps {
+function mapStateToProps(state: any): IMapStateToProps {
+  console.log("redux state: ", state);
   return {
-    fetchUser: () => dispatch(fetchUserRequest())
+    recipes: state.recipes.recipes || []
   };
 }
 
-export default connect<{}, DispatchProps>(
-  null,
+const mapDispatchToProps = (dispatch: Dispatch<any>): IMapDispatchToProps => ({
+  fetchRecipes: () => dispatch(fetchRecipeRequest())
+});
+
+export default connect<IMapStateToProps, IMapDispatchToProps>(
+  mapStateToProps,
   mapDispatchToProps
 )(App);

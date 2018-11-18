@@ -12,9 +12,15 @@ class RecipeNew extends React.Component<InjectedFormProps<{}, {}> & {}> {
             <Field
               name="recipeName"
               component="input"
-              // type="text"
-              // placeholder="Recipe Name"
+              type="text"
+              placeholder="Recipe Name"
             />
+
+            <br />
+            <br />
+            <button type="button" className="ui button">
+              Create
+            </button>
           </div>
         </form>
       </div>
