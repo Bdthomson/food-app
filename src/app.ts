@@ -12,7 +12,7 @@ const recipes = [
   {
     id: "2",
     imgUrl: "",
-    ingredients: ["Hamburger Patty", "Cheese"],
+    ingredients: ["Hamburger Patty", "Cheese", "Bun"],
     name: "Burger"
   }
 ];
